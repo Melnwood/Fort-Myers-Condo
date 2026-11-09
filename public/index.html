@@ -1,0 +1,251 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Guest Guide</title>
+<meta name="robots" content="noindex">
+<link rel="manifest" href="/manifest.webmanifest">
+<link rel="icon" href="/icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/icon-192.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="theme-color" content="#1F7A8C">
+<style>
+:root{--accent:#1F7A8C;--bg:#F6F4EF;--card:#fff;--ink:#1C2326;--muted:#5E6A6F;--line:#E4E0D8;--lock:#B4532A;--r:16px}
+@media (prefers-color-scheme:dark){:root{--bg:#111517;--card:#1A2023;--ink:#ECEFF0;--muted:#9AA6AB;--line:#2A3236}}
+*{box-sizing:border-box}html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.55 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;padding-bottom:env(safe-area-inset-bottom)}
+a{color:var(--accent)}button{font:inherit;color:inherit}
+.wrap{max-width:760px;margin:0 auto;padding:0 16px}
+/* hero */
+.hero{position:relative;min-height:260px;display:flex;align-items:flex-end;color:#fff;background:#355 center/cover no-repeat}
+.hero::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.05) 30%,rgba(0,0,0,.65))}
+.hero .wrap{position:relative;z-index:1;width:100%;padding-top:48px;padding-bottom:20px}
+.hero h1{margin:0;font-size:30px;line-height:1.15;letter-spacing:-.01em}
+.hero p{margin:4px 0 0;opacity:.92;font-size:15px;white-space:pre-line}
+.actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:14px}
+.btn{display:inline-flex;align-items:center;gap:6px;border:0;border-radius:999px;padding:9px 14px;background:rgba(255,255,255,.95);color:#1C2326;text-decoration:none;font-size:14px;font-weight:600;cursor:pointer}
+.btn svg{width:16px;height:16px}
+.btn.solid{background:var(--accent);color:#fff}
+.btn.lockbtn{background:#fff;color:var(--lock)}
+.btn.unl{background:#E8F5EE;color:#1E6B43}
+/* search */
+.search{position:sticky;top:0;z-index:5;background:var(--bg);padding:12px 0;border-bottom:1px solid transparent}
+.search input{width:100%;padding:12px 14px 12px 40px;border-radius:12px;border:1px solid var(--line);background:var(--card) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='18' height='18' fill='none' stroke='%235E6A6F' stroke-width='2' viewBox='0 0 24 24'%3E%3Ccircle cx='11' cy='11' r='7'/%3E%3Cpath d='m20 20-3.5-3.5'/%3E%3C/svg%3E") 12px 50% no-repeat;color:var(--ink);font-size:16px}
+/* sections grid */
+.grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin:8px 0 24px}
+@media(min-width:620px){.grid{grid-template-columns:repeat(4,1fr)}}
+.tile{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:16px 14px;text-align:left;cursor:pointer;display:flex;flex-direction:column;gap:10px;min-height:112px;transition:transform .12s}
+.tile:active{transform:scale(.98)}
+.tile .ic{width:38px;height:38px;border-radius:10px;display:grid;place-items:center;background:color-mix(in srgb,var(--accent) 14%,transparent);color:var(--accent)}
+.tile .ic svg{width:22px;height:22px}
+.tile b{font-size:15px;line-height:1.25}.tile small{color:var(--muted);font-size:12px}
+/* section page */
+.back{display:inline-flex;align-items:center;gap:4px;background:none;border:0;color:var(--accent);font-weight:600;padding:16px 0 4px;cursor:pointer}
+h2.sec{font-size:24px;margin:4px 0 12px}
+.sub{font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin:22px 0 8px;font-weight:700}
+.card{background:var(--card);border:1px solid var(--line);border-radius:var(--r);overflow:hidden;margin-bottom:14px}
+.card .in{padding:14px 16px 16px}
+.card h3{margin:0 0 6px;font-size:18px}
+.card .body{overflow-wrap:anywhere}
+.card .body p{margin:0 0 10px}.card .body ul,.card .body ol{margin:0 0 10px;padding-left:22px}.card .body li{margin:3px 0}
+.card .body h4{margin:14px 0 6px;font-size:15px}
+.gal{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;gap:2px;background:#000}
+.gal img{flex:0 0 100%;width:100%;max-height:420px;object-fit:cover;scroll-snap-align:center;display:block;cursor:zoom-in}
+.gal.multi img{flex-basis:88%}
+.vid{position:relative;padding-top:56.25%;background:#000}.vid.tall{padding-top:120%}
+.vid iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+.locked{display:flex;gap:12px;align-items:center;padding:14px 16px;color:var(--lock)}
+.locked svg{flex:none;width:22px;height:22px}
+.locked button{margin-left:auto}
+.pill{display:inline-block;font-size:11px;font-weight:700;padding:2px 8px;border-radius:999px;background:#FBEDE6;color:var(--lock);margin-left:6px;vertical-align:middle}
+.empty{color:var(--muted);text-align:center;padding:40px 0}
+.foot{color:var(--muted);font-size:13px;text-align:center;padding:24px 0 40px}
+/* modal */
+dialog{border:0;border-radius:18px;padding:22px;max-width:360px;width:calc(100% - 32px);background:var(--card);color:var(--ink)}
+dialog::backdrop{background:rgba(0,0,0,.5)}
+dialog input{width:100%;padding:12px;border:1px solid var(--line);border-radius:10px;font-size:18px;margin:12px 0;background:var(--bg);color:var(--ink)}
+.err{color:var(--lock);font-size:14px;min-height:20px}
+.lb{position:fixed;inset:0;background:rgba(0,0,0,.92);display:none;align-items:center;justify-content:center;z-index:50}
+.lb img{max-width:100%;max-height:100%}
+.lb.on{display:flex}
+.spin{padding:80px 0;text-align:center;color:var(--muted)}
+</style>
+</head>
+<body>
+<div id="app"><div class="spin">Loading your guide…</div></div>
+
+<dialog id="dlg">
+  <form method="dialog" id="codeForm">
+    <h3 style="margin:0">Enter your guest code</h3>
+    <p style="margin:6px 0 0;color:var(--muted);font-size:14px">Your host sent this with your booking. It unlocks door codes and WiFi.</p>
+    <input id="codeIn" autocomplete="off" autocapitalize="none" spellcheck="false" placeholder="Guest code">
+    <div class="err" id="codeErr"></div>
+    <div style="display:flex;gap:8px;justify-content:flex-end">
+      <button class="btn" value="cancel" type="button" onclick="dlg.close()">Cancel</button>
+      <button class="btn solid" type="submit">Unlock</button>
+    </div>
+  </form>
+</dialog>
+<div class="lb" id="lb" onclick="this.classList.remove('on')"><img alt=""></div>
+
+<script>
+const ICONS = {
+  "Welcome": '<path d="M18 11V6a2 2 0 0 0-4 0v5M14 10V4a2 2 0 0 0-4 0v6M10 10.5V6a2 2 0 0 0-4 0v8"/><path d="M18 8a2 2 0 1 1 4 0v6a8 8 0 0 1-8 8h-2c-2.8 0-4.5-.86-5.99-2.34l-3.6-3.6a2 2 0 0 1 2.83-2.82L7 15"/>',
+  "Before You Leave Home": '<path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/>',
+  "Arrival Information": '<circle cx="7.5" cy="15.5" r="5.5"/><path d="m21 2-9.6 9.6M15.5 7.5l3 3L22 7l-3-3"/>',
+  "WiFi Information": '<path d="M5 13a10 10 0 0 1 14 0M8.5 16.5a5 5 0 0 1 7 0M2 8.82a15 15 0 0 1 20 0"/><path d="M12 20h.01"/>',
+  "About Our Place": '<path d="M2 4v16M2 8h18a2 2 0 0 1 2 2v10M2 17h20M6 8v9"/>',
+  "Your Local Area Guide": '<path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/>',
+  "Safety Info & Rules": '<path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>',
+  "So Long, Farewell!": '<path d="M5 12h14M12 5l7 7-7 7"/>'
+};
+const DEFAULT_IC = '<circle cx="12" cy="12" r="9"/><path d="M12 8v4l3 2"/>';
+const svg = (p, w=24) => `<svg viewBox="0 0 24 24" width="${w}" height="${w}" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">${p}</svg>`;
+const LOCK = '<rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/>';
+const OPEN = '<rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 7.9-1"/>';
+
+const qs = new URLSearchParams(location.search);
+const SLUG = (qs.get("p") || "").toLowerCase();
+const store = { get(k){try{return localStorage.getItem(k)}catch(e){return null}}, set(k,v){try{v==null?localStorage.removeItem(k):localStorage.setItem(k,v)}catch(e){}} };
+const CODE_KEY = "gg-code-" + SLUG;
+if (qs.get("code")) { store.set(CODE_KEY, qs.get("code")); qs.delete("code"); history.replaceState(null, "", location.pathname + (qs.toString() ? "?" + qs : "") + location.hash); }
+
+let DATA = null, Q = "";
+const $ = s => document.querySelector(s);
+const esc = s => String(s ?? "").replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+
+function inline(s) {
+  s = esc(s);
+  s = s.replace(/\[([^\]]+)\]\((https?:\/\/[^)\s]+)\)/g, (m,t,u) => `<a href="${u}" target="_blank" rel="noopener">${t}</a>`);
+  s = s.replace(/\*\*([^*]+)\*\*/g, "<strong>$1</strong>");
+  s = s.replace(/(^|[\s(])[_*]([^_*\n]+)[_*](?=[\s).,:;!?]|$)/g, "$1<em>$2</em>");
+  s = s.replace(/(^|[\s>])(https?:\/\/[^\s<]+)/g, '$1<a href="$2" target="_blank" rel="noopener">$2</a>');
+  s = s.replace(/(^|[\s>(])(\+?1?\s?\(?\d{3}\)?[\s.-]\d{3}[\s.-]\d{4})/g, (m,a,n) => `${a}<a href="tel:${n.replace(/[^\d+]/g,"")}">${n}</a>`);
+  return s;
+}
+function md(src) {
+  const lines = String(src || "").replace(/\r/g, "").split("\n");
+  let out = "", list = null, para = [];
+  const flushP = () => { if (para.length) { out += `<p>${para.map(inline).join("<br>")}</p>`; para = []; } };
+  const flushL = () => { if (list) { out += `</${list}>`; list = null; } };
+  for (const raw of lines) {
+    const l = raw.trimEnd();
+    let m;
+    if (!l.trim()) { flushP(); flushL(); continue; }
+    if ((m = l.match(/^#{1,6}\s+(.*)/))) { flushP(); flushL(); out += `<h4>${inline(m[1])}</h4>`; continue; }
+    if ((m = l.match(/^\s*[-*•]\s+(.*)/))) { flushP(); if (list !== "ul") { flushL(); out += "<ul>"; list = "ul"; } out += `<li>${inline(m[1])}</li>`; continue; }
+    if ((m = l.match(/^\s*\d+[.)]\s+(.*)/))) { flushP(); if (list !== "ol") { flushL(); out += "<ol>"; list = "ol"; } out += `<li>${inline(m[1])}`; out += "</li>"; continue; }
+    if (list && /^\s{2,}\S/.test(raw)) { out = out.replace(/<\/li>$/, "<br>" + inline(l.trim()) + "</li>"); continue; }
+    if (list === "ol" && para.length === 0) { out = out.replace(/<\/li>$/, "<br>" + inline(l.trim()) + "</li>"); continue; }
+    flushL(); para.push(l);
+  }
+  flushP(); flushL();
+  return out;
+}
+function video(url) {
+  if (!url) return "";
+  return url.split(/\s+/).filter(Boolean).map(u => {
+    let m;
+    if ((m = u.match(/vimeo\.com\/(?:video\/)?(\d+)/))) return `<div class="vid tall"><iframe src="https://player.vimeo.com/video/${m[1]}" allow="fullscreen; picture-in-picture" loading="lazy" title="Video"></iframe></div>`;
+    if ((m = u.match(/(?:youtu\.be\/|v=|shorts\/)([\w-]{11})/))) return `<div class="vid${/shorts/.test(u)?" tall":""}"><iframe src="https://www.youtube-nocookie.com/embed/${m[1]}" allow="fullscreen" loading="lazy" title="Video"></iframe></div>`;
+    if (/\.(mp4|mov|webm)(\?|$)/i.test(u)) return `<video src="${esc(u)}" controls playsinline style="width:100%;display:block;background:#000"></video>`;
+    return `<div class="in"><a class="btn solid" href="${esc(u)}" target="_blank" rel="noopener">▶ Watch video</a></div>`;
+  }).join("");
+}
+
+function sections() {
+  const order = [];
+  const by = {};
+  for (const t of DATA.topics) { if (!by[t.section]) { by[t.section] = []; order.push(t.section); } by[t.section].push(t); }
+  return { order, by };
+}
+
+function card(t) {
+  if (t.locked) return `<div class="card"><div class="in" style="padding-bottom:0"><h3>${esc(t.title)} <span class="pill">Guests only</span></h3></div>
+    <div class="locked">${svg(LOCK)}<span>Enter your guest code to see this.</span><button class="btn lockbtn" onclick="askCode()">Unlock</button></div></div>`;
+  const pics = t.photos || [];
+  const gal = pics.length ? `<div class="gal${pics.length>1?" multi":""}">${pics.map(p => `<img src="${esc(p.thumb||p.url)}" data-full="${esc(p.url)}" alt="${esc(t.title)}" loading="lazy" onclick="zoom(this)">`).join("")}</div>` : "";
+  const body = t.body ? `<div class="body">${md(t.body)}</div>` : "";
+  return `<div class="card" id="t-${t.id}">${video(t.video) || ""}${t.video ? "" : gal}<div class="in"><h3>${esc(t.title)}</h3>${body}</div>${t.video && pics.length > 1 ? `<div class="gal multi">${pics.slice(1).map(p => `<img src="${esc(p.thumb||p.url)}" data-full="${esc(p.url)}" alt="" loading="lazy" onclick="zoom(this)">`).join("")}</div>` : ""}</div>`;
+}
+
+function hero() {
+  const p = DATA.property;
+  const dest = p.lat && p.lng ? `${p.lat},${p.lng}` : p.address.replace(/\n/g, ", ");
+  const dir = `https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent(dest)}`;
+  const lockBtn = !p.hasCode ? "" : DATA.unlocked
+    ? `<button class="btn unl" onclick="forget()">${svg(OPEN,16)} Unlocked</button>`
+    : `<button class="btn lockbtn" onclick="askCode()">${svg(LOCK,16)} Guest code</button>`;
+  return `<header class="hero" style="background-image:url('${esc(p.cover?.url || "")}')"><div class="wrap">
+    <h1>${esc(p.name)}</h1><p>${esc(p.address)}</p>
+    <div class="actions">
+      <a class="btn solid" href="${dir}" target="_blank" rel="noopener">${svg('<path d="M3 11l19-9-9 19-2-8-8-2z"/>',16)} Directions</a>
+      ${p.hostPhone ? `<a class="btn" href="sms:${esc(p.hostPhone.replace(/[^\d+]/g,""))}">${svg('<path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>',16)} Text host</a>` : ""}
+      ${lockBtn}
+    </div></div></header>`;
+}
+
+function render() {
+  const route = decodeURIComponent(location.hash.slice(1));
+  const { order, by } = sections();
+  let main = "";
+  if (Q) {
+    const q = Q.toLowerCase();
+    const hits = DATA.topics.filter(t => (t.title + " " + t.subsection + " " + t.section + " " + t.body).toLowerCase().includes(q));
+    main = `<div class="sub">${hits.length} result${hits.length===1?"":"s"}</div>` + (hits.map(card).join("") || `<div class="empty">Nothing found for “${esc(Q)}”.</div>`);
+  } else if (route && by[route]) {
+    let last = "";
+    main = `<button class="back" onclick="location.hash=''">‹ All sections</button><h2 class="sec">${esc(route)}</h2>` +
+      by[route].map(t => { const h = t.subsection && t.subsection !== last && t.subsection !== t.title ? `<div class="sub">${esc(t.subsection)}</div>` : ""; last = t.subsection; return h + card(t); }).join("");
+  } else {
+    main = `<div class="grid">${order.map(s => `<button class="tile" onclick="location.hash='${encodeURIComponent(s)}'"><span class="ic">${svg(ICONS[s] || DEFAULT_IC)}</span><b>${esc(s)}</b><small>${by[s].length} item${by[s].length===1?"":"s"}</small></button>`).join("")}</div>`;
+  }
+  $("#app").innerHTML = (route && !Q ? "" : hero()) +
+    `<div class="wrap"><div class="search"><input id="q" type="search" placeholder="Search the guide (wifi, garbage, beach…)" value="${esc(Q)}"></div>${main}
+     <div class="foot">${esc(DATA.property.name)}${DATA.property.hostName ? " · hosted by " + esc(DATA.property.hostName) : ""}</div></div>`;
+  const qi = $("#q");
+  qi.oninput = e => { Q = e.target.value.trim(); const pos = e.target.selectionStart; render(); const n = $("#q"); n.focus(); n.setSelectionRange(pos, pos); };
+}
+
+async function load(code) {
+  if (window.__GUIDE_DATA) { DATA = window.__GUIDE_DATA; return true; } // preview hook
+  const headers = {}; const c = code ?? store.get(CODE_KEY); if (c) headers["x-guest-code"] = c;
+  const r = await fetch(`/api/guide?p=${encodeURIComponent(SLUG)}`, { headers });
+  const j = await r.json().catch(() => ({ error: "Could not load the guide." }));
+  if (!r.ok) throw new Error(j.error);
+  DATA = j;
+  document.title = j.property.name + " · Guest Guide";
+  document.documentElement.style.setProperty("--accent", j.property.accent);
+  try { store.set("gg-cache-" + SLUG, JSON.stringify(j)); } catch (e) {}
+  return j.unlocked;
+}
+
+window.askCode = () => { $("#codeErr").textContent = ""; $("#codeIn").value = ""; dlg.showModal(); setTimeout(() => $("#codeIn").focus(), 50); };
+window.forget = () => { if (confirm("Lock the guide on this device?")) { store.set(CODE_KEY, null); load("").then(render); } };
+window.zoom = img => { const lb = $("#lb"); lb.querySelector("img").src = img.dataset.full; lb.classList.add("on"); };
+$("#codeForm").onsubmit = async e => {
+  e.preventDefault();
+  const v = $("#codeIn").value.trim(); if (!v) return;
+  $("#codeErr").textContent = "Checking…";
+  try {
+    const ok = await load(v);
+    if (ok) { store.set(CODE_KEY, v); dlg.close(); render(); }
+    else $("#codeErr").textContent = "That code didn't work. Check your booking message.";
+  } catch (err) { $("#codeErr").textContent = err.message; }
+};
+window.addEventListener("hashchange", () => { Q = ""; render(); scrollTo(0, 0); });
+
+(async () => {
+  try { await load(); }
+  catch (e) {
+    const cached = store.get("gg-cache-" + SLUG);
+    if (cached) DATA = JSON.parse(cached);
+    else { $("#app").innerHTML = `<div class="wrap empty">${esc(e.message)}</div>`; return; }
+  }
+  render();
+})();
+if ("serviceWorker" in navigator && !window.__GUIDE_DATA) navigator.serviceWorker.register("/sw.js").catch(() => {});
+</script>
+</body>
+</html>
